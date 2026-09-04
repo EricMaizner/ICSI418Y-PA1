@@ -1,0 +1,26 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Project Tasks</title>
+  </head>
+  <body>
+    <h1>My Task List</h1>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <form id="task-form">
+      <label for="task-input"> Task: </label>
+      <input id="task-input" type="text" />
+      <label for="priority"> Priority: </label>
+      <select id="priority">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button type="submit">Add Task</button>
+    </form>
+    <hr />
+    <ul id="task-list"></ul>
+  </body>
+</html>

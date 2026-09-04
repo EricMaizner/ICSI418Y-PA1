@@ -1,0 +1,16 @@
+.completed {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  text-decoration: line-through;
+}
+.data-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+#task-list {
+  margin: 10px;
+  border: 1px solid gray;
+  padding: 12px;
+}
