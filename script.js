@@ -6,10 +6,10 @@ const tasks = [];
 
 function displayTask()
 {
-   const container = document.createElement("tr");
-   const data = document.createElement("td");
+   const data = document.createElement("li");
    const completeTask = document.createElement("button");
    const deleteTask = document.createElement("button");
+   const id = taskInput.value;
 
    completeTask.textContent = "Complete";
    deleteTask.textContent = "Delete";
@@ -17,36 +17,64 @@ function displayTask()
    completeTask.addEventListener("click",function(event)
     {
         event.preventDefault();
-        container.classList = ("completed");
+        data.classList = ("completed");
+        tasks[searchTasks(id)].completed = true;
     });
    deleteTask.addEventListener("click", function(event)
     {
        event.preventDefault();
-       container.remove(); 
+       data.remove(); 
+       tasks[searchTasks(id)].name = null;
     }) 
 
-   container.className = "data-row";
+   data.className = "data-row";
    data.textContent = taskInput.value + " " + priorityInput.value;
 
-   container.append(data, completeTask, deleteTask);
-   display.appendChild(container);
+   data.append(completeTask, deleteTask);
+   display.appendChild(data);
 
 };
+
+//Allows for updating completed status in task object
+function searchTasks(target)
+{
+    let position = -1;
+
+    for (let index = 0; index < tasks.length; index++) 
+    {
+        if(tasks[index].name == target)
+            position = index;
+    }
+
+    return position;
+}
 
 form.addEventListener("submit", function(event) 
 {
     event.preventDefault();
     const taskName = taskInput.value;
     const taskPriority = priorityInput.value;
-    const task =
+
+    if(taskName.length == 0)
     {
-        name: taskName,
-        priority: taskPriority,
-        completed: false
-    };
-    tasks.push(task);
-    console.log(tasks);
-    displayTask();
+        alert("Task field empty...");
+        taskInput.focus();
+    }
+    else if(searchTasks(taskName) != -1)
+        alert("Task already exists...");
+    else
+    {
+        let task =
+        {
+            name: taskName,
+            priority: taskPriority,
+            completed: false
+        };
+        
+        tasks.push(task);
+        console.log(tasks);
+        displayTask();
+    }
 });
 
 
