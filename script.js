@@ -7,6 +7,8 @@ const tasks = [];
 function displayTask()
 {
    const data = document.createElement("li");
+   const textName = document.createElement("span");
+   const textPriority = document.createElement("span");
    const completeTask = document.createElement("button");
    const deleteTask = document.createElement("button");
    const id = taskInput.value;
@@ -17,7 +19,7 @@ function displayTask()
    completeTask.addEventListener("click",function(event)
     {
         event.preventDefault();
-        data.classList = ("completed");
+        data.classList.add("completed");
         tasks[searchTasks(id)].completed = true;
     });
    deleteTask.addEventListener("click", function(event)
@@ -28,9 +30,10 @@ function displayTask()
     }) 
 
    data.className = "data-row";
-   data.textContent = taskInput.value + " " + priorityInput.value;
+   textName.textContent = taskInput.value;
+   textPriority.textContent = priorityInput.value;
 
-   data.append(completeTask, deleteTask);
+   data.append(textName, textPriority, completeTask, deleteTask);
    display.appendChild(data);
 
 };

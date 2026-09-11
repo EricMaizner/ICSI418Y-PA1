@@ -10,23 +10,30 @@ form {
 }
 
 button {
-  border-radius: 0.2rem;
+  border-radius: 0.5rem;
 }
 
 body {
   text-align: center;
 }
 
-.completed {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  text-decoration: line-through wavy 2px;
-}
 .data-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 100px 90px 90px;
+  padding: 5px;
   gap: 10px;
-  align-items: center;
+  justify-content: center;
+}
+
+.data-header
+{
+  font-size: 20px;
+  border-bottom: 5px solid grey;
+}
+
+.completed {
+  
+  text-decoration: line-through wavy 2px;
 }
 #task-list {
   border: 3px solid gray;
@@ -36,6 +43,3 @@ body {
   padding: 15px;
 }
 
-ul {
-  list-style: none;
-}
