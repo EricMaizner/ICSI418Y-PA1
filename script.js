@@ -38,7 +38,7 @@ function displayTask()
 
 };
 
-//Allows for updating completed status in task object
+//Allows for updating completed status in task object and input validation
 function searchTasks(target)
 {
     let position = -1;
@@ -58,18 +58,18 @@ form.addEventListener("submit", function(event)
     const taskName = taskInput.value;
     const taskPriority = priorityInput.value;
 
-    if(taskName.length == 0)
+    if(taskName.trim().length == 0)
     {
         alert("Task field empty...");
         taskInput.focus();
     }
-    else if(searchTasks(taskName) != -1)
+    else if(searchTasks(taskName.trim()) != -1)
         alert("Task already exists...");
     else
     {
         let task =
         {
-            name: taskName,
+            name: taskName.trim(),
             priority: taskPriority,
             completed: false
         };
